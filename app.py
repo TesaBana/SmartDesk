@@ -71,11 +71,13 @@ def login():
 @login_required
 def dashboard():
     if current_user.role == 'Student':
-        return render_template('student_dashboard.html')
+        return render_template('studentPortal.html')
     elif current_user.role == 'Teacher':
-        return render_template('teacher_dashboard.html')
+        return render_template('TeachersDashboard.html')
     elif current_user.role == 'Parent':
-        return render_template('parent_dashboard.html')
+        return render_template('ParentsDashboard.html')
+    elif current_user.role == 'admin':
+        return render_template('admin.html')
     elif current_user.role == 'Accountant':
         return render_template('accountant_dashboard.html')
     elif current_user.role == 'Bursar':
@@ -91,6 +93,26 @@ def logout():
     logout_user()
     flash('Logged out successfully!')
     return redirect(url_for('login'))
+    
+@app.route("/index")
+def index():
+    return render_template("index.html")
+
+@app.route("/admin")
+def admin():
+    return render_template("admin.html")
+
+@app.route("/StudentPortal")
+def StudentPortal():
+    return render_template("StudentPortal.html")
+
+@app.route("/TeachersDashboard")
+def TeachersDashboard():
+    return render_template("TeachersDashboard.html")
+
+@app.route("/ParentsDashboard")
+def ParentsDashboard():
+    return render_template("ParentsDashboard.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
