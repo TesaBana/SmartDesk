@@ -7,8 +7,24 @@
 <link rel="stylesheet" href="{{url_for("static", filename="css/book.css")}}" />
 <link rel="stylesheet" href="{{url_for("static", filename="css/planNpricing.css")}}" />
 <link rel="stylesheet" href="{{url_for("static", filename="css/ProgramList.css")}}" />
-
+<link rel="stylesheet" href="{{url_for("static", filename="css/cover.css")}}" />
 <main>
+<div class="cover-image-slider">
+    <div class="slides fade">
+        <img src="{{ url_for('static', filename='img/cover.jpg') }}" alt="Cover Image 1">
+    </div>
+    <div class="slides fade">
+        <img src="{{ url_for('static', filename='img/cover1.jpg') }}" alt="Cover Image 2">
+    </div>
+    <div class="slides fade">
+        <img src="{{ url_for('static', filename='img/cover2.jpg') }}" alt="Cover Image 3">
+    </div>
+
+    <!-- Navigation buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
 <!-- Home Section -->
       <h1>Become Empowered by SmartDesk by your side</h1>
       <p>SmartDesk School Management System with everything you need, all brought together.</p>
@@ -190,5 +206,24 @@
 
 
 </main>
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("slides");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        slides[slideIndex-1].style.display = "block";  
+        setTimeout(showSlides, 9000); // Change image every 4 seconds
+    }
+</script>
     
 {% endblock %}

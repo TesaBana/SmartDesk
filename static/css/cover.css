@@ -1,0 +1,56 @@
+/* Slider container */
+.cover-image-slider {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Slides */
+.slides {
+    display: none;
+    width: 100%;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* Navigation buttons (prev/next) */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.6s ease;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Add image styling */
+.cover-image-slider img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
